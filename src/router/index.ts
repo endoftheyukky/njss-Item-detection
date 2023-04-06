@@ -1,17 +1,17 @@
-import CounterPage from '@/views/counter/CounterPage.vue'
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import HomePage from "@/views/HomePage.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Counter',
-    component: CounterPage,
-  }
-]
+    path: "/",
+    name: "Home",
+    component: HomePage,
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
