@@ -1,1 +1,0 @@
-# njss-Item-detection
