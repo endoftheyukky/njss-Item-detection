@@ -1,10 +1,10 @@
 <template>
     <div>
-      <h1>Home Page</h1>
+      <h1>項目抽出システム</h1>
       <FileUploader @pdf-uploaded="onPdfUploaded" />
       <PdfViewer :pdf-data="pdfData" />
       <div>
-        <h2>Recommendations</h2>
+        <h2>レコメンド</h2>
         <ul>
           <li v-for="(rec, index) in recommendations" :key="index">
             {{ rec.datetime }} - {{ rec.location }} - {{ rec.result }}
