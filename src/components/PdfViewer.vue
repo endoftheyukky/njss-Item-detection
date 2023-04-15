@@ -1,27 +1,38 @@
 <template>
-    <div>
-      <!-- PDFビューアのコンテンツをここに追加 -->
-    </div>
-  </template>
-  
-<script>
-  export default {
-    name: "PdfViewer",
-    props: {
-      // 必要なプロパティをここに追加
-    },
-    data() {
-      return {
-        // 必要なデータをここに追加
-      };
-    },
-    methods: {
-      // 必要なメソッドをここに追加
-    },
-  };
+  <div>
+    <div ref="pdfViewer" />
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, onMounted, onUnmounted} from 'vue';
+import { getPdf } from '../utils/pdf';
+
+export default defineComponent({
+  props: {
+    file: {
+      type: Object as () => File | null,
+      required: true
+    }
+  },
+  setup(props) {
+    const pdfViewer = ref<HTMLElement | null>(null);
+
+    onMounted(() => {
+      if (pdfViewer.value && props.file) {
+        getPdf(props.file, pdfViewer);
+      }
+    });
+
+    onUnmounted(() => {
+      if (pdfViewer.value) {
+        pdfViewer.value.innerHTML = '';
+      }
+    });
+
+    return {
+      pdfViewer
+    };
+  }
+});
 </script>
-  
-<style scoped>
-  /* 必要なスタイルをここに追加 */
-</style>
-  
