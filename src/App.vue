@@ -61,15 +61,16 @@ export default defineComponent({
 <style scoped>
 /* 以下のCSSを追加 */
 main {
-  background-color: aqua;
   display: flex;
-  height: calc(100% - 4rem);
+  height: calc(100vh - 4rem);
 }
 
 .left-section,
 .right-section {
   flex: 1;
   width: 50%;
+  height: 100%;
+  /* overflow: auto; */
 }
 
 /* 既存のCSSを修正 */
@@ -87,13 +88,4 @@ html, body {
   height: 100%;
   margin: 0;
 }
-
-/* section:first-child {
-  max-width: 50%;
-}
-
-section:last-child {
-  width: 50%;
-} */
-
 </style>

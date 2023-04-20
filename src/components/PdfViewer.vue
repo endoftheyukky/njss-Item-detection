@@ -39,5 +39,10 @@ export default defineComponent({
   width: 100%;
   height: 100%;
 }
+
+div {
+  height: 100%;
+}
 </style>
+
 
