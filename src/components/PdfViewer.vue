@@ -1,38 +1,43 @@
 <template>
   <div>
-    <div ref="pdfViewer" />
+    <iframe v-if="pdfUrl" class="pdf-iframe" :src="pdfUrl" height=100% frameborder="1"></iframe>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted} from 'vue';
-import { getPdf } from '../utils/pdf';
+import { defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
   props: {
     file: {
       type: Object as () => File | null,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
-    const pdfViewer = ref<HTMLElement | null>(null);
+    const pdfUrl = ref<string | null>(null);
 
-    onMounted(() => {
-      if (pdfViewer.value && props.file) {
-        getPdf(props.file, pdfViewer);
+    watch(
+      () => props.file,
+      (file) => {
+        if (file) {
+          pdfUrl.value = URL.createObjectURL(file);
+        } else {
+          pdfUrl.value = null;
+        }
       }
-    });
-
-    onUnmounted(() => {
-      if (pdfViewer.value) {
-        pdfViewer.value.innerHTML = '';
-      }
-    });
+    );
 
     return {
-      pdfViewer
+      pdfUrl,
     };
-  }
+  },
 });
 </script>
+<style scoped>
+.pdf-iframe {
+  width: 100%;
+  height: 100%;
+}
+</style>
+

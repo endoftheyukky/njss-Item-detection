@@ -1,7 +1,6 @@
 import { getDocument } from 'pdfjs-dist';
-import { Ref } from 'vue';
 
-export async function getPdf(file: File, viewer: HTMLElement | Ref<HTMLElement | null>) {
+export async function getPdf(file: File, viewer: HTMLElement) {
   const pdf = await getDocument(URL.createObjectURL(file)).promise;
   const page = await pdf.getPage(1);
   const viewport = page.getViewport({ scale: 1 });
@@ -20,13 +19,6 @@ export async function getPdf(file: File, viewer: HTMLElement | Ref<HTMLElement |
 
   await page.render(renderContext).promise;
 
-  if (viewer instanceof HTMLElement) {
-    viewer.innerHTML = '';
-    viewer.appendChild(canvas);
-  } else {
-    if(viewer.value){
-      viewer.value.innerHTML = '';
-      viewer.value.appendChild(canvas);
-    }
-  }
+  viewer.innerHTML = '';
+  viewer.appendChild(canvas);
 }

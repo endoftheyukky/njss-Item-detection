@@ -4,14 +4,14 @@
       <h1>項目抽出システム</h1>
     </header>
     <main>
-      <section>
+      <section class="left-section">
         <file-uploader
           @uploaded="onFileUploaded"
           @start-extraction="startExtraction"
         ></file-uploader>
         <recommendation-list v-if="recommendations" :data="recommendations" />
       </section>
-      <section>
+      <section class="right-section">
         <pdf-viewer :file="selectedFile" />
       </section>
     </main>
@@ -58,8 +58,21 @@ export default defineComponent({
   }
 });
 </script>
-
 <style scoped>
+/* 以下のCSSを追加 */
+main {
+  background-color: aqua;
+  display: flex;
+  height: calc(100% - 4rem);
+}
+
+.left-section,
+.right-section {
+  flex: 1;
+  width: 50%;
+}
+
+/* 既存のCSSを修正 */
 header {
   background-color: #000080;
   padding: 1rem;
@@ -70,13 +83,17 @@ h1 {
   margin: 0;
 }
 
-main {
-  display: flex;
-  justify-content: space-between;
-  padding: 2rem;
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
-section {
-  flex: 1;
+/* section:first-child {
+  max-width: 50%;
 }
+
+section:last-child {
+  width: 50%;
+} */
+
 </style>
