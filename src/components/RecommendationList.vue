@@ -1,7 +1,7 @@
 <template>
   <ul class="recommendation-list">
     <li v-for="(value, key) in data" :key="key" class="recommendation-item">
-      {{ key }}：{{ value }}
+      <span class="key">{{ key }}</span>：<span class="value">{{ value }}</span>
     </li>
   </ul>
 </template>
@@ -13,25 +13,34 @@ export default defineComponent({
   props: {
     data: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 });
 </script>
+
 <style scoped>
 .recommendation-list {
+  list-style: none;
   padding: 0;
-  list-style-type: none;
-  margin-top: 4rem; /* 上にスペースを追加（値を調整） */
 }
 
 .recommendation-item {
-  font-size: 1.2rem; /* テキストサイズを変更 */
-  padding: 0.5rem 0; /* 上下にパディングを追加 */
-  border-bottom: 1px solid #ccc; /* 下線を追加 */
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
-.recommendation-item:last-child {
-  border-bottom: none; /* 最後の要素の下線を削除 */
+.key {
+  font-weight: 600;
+  color: #000080;
+}
+
+.value {
+  font-weight: 400;
+  color: #000080;
 }
 </style>

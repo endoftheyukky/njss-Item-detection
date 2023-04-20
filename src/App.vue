@@ -59,21 +59,18 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-/* 以下のCSSを追加 */
 main {
   display: flex;
   height: calc(100vh - 4rem);
 }
 
-.left-section,
-.right-section {
+section {
   flex: 1;
   width: 50%;
   height: 100%;
-  /* overflow: auto; */
+  padding: 1rem;
 }
 
-/* 既存のCSSを修正 */
 header {
   background-color: #000080;
   padding: 1rem;

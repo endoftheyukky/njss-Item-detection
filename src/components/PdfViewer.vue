@@ -1,6 +1,6 @@
 <template>
   <div>
-    <iframe v-if="pdfUrl" class="pdf-iframe" :src="pdfUrl" height=100% frameborder="1"></iframe>
+    <iframe v-if="pdfUrl" class="pdf-iframe" :src="pdfUrl" height=100% frameborder="0"></iframe>
   </div>
 </template>
 
