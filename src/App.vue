@@ -74,6 +74,7 @@ section {
 header {
   background-color: #000080;
   padding: 1rem;
+  margin: 0
 }
 
 h1 {
